@@ -1,0 +1,19 @@
+{
+  "name": "telegram-bot",
+  "version": "1.0.0",
+  "dependencies": {
+    "file-system": "^2.2.2",
+    "lodash": "^4.17.5",
+    "node-telegram-bot-api": "^0.30.0",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  },
+  "engines": {
+    "node": "8.9.4"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  }
+}

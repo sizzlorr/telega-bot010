@@ -1,3 +1,14 @@
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
+
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 const TelegramBot = require("node-telegram-bot-api");
 
 const fs = require("file-system");
@@ -9,7 +20,9 @@ const _ = require("lodash");
 const token = '519706729:AAGVRa3pWV6Og5gslsj7oVhwwI0-ckgyCfE';
 
 const bot = new TelegramBot(token, {
+
     polling: true
+
 });
 
 const KB = {
@@ -157,5 +170,3 @@ function sendCurrencyScreen(chatId) {
     })
 
 };
-
-

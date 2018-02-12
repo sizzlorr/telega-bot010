@@ -1,13 +1,8 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
+const express = require('express');
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+const path = require('path');
+
+const PORT = process.env.PORT || 5000;
 
 const TelegramBot = require("node-telegram-bot-api");
 
@@ -35,17 +30,19 @@ const KB = {
 
 const PicSrcs = {
     [KB.cat]: [
-        'cat1.gif',
-        'cat2.gif',
-        'cat3.gif'
+        'JIX9t2j0ZTN9S'
     ],
     [KB.memes]: [
-        'mem1.gif',
-        'mem2.gif',
-        'mem3.gif',
-        'mem4.gif'
+        'cat-lol-vFKqnCdLPNOKc'
     ]
 };
+
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 bot.onText(/\/start/, msg => {
 
@@ -127,7 +124,7 @@ function sendGreeting(msg, sayHello = true) {
                 [KB.currency, KB.picture]
             ]
         }
-    })
+    });
 };
 
 function sendPictureByName(chatId, picName) {
@@ -138,7 +135,7 @@ function sendPictureByName(chatId, picName) {
 
     bot.sendMessage(chatId, 'Превозмогаю...');
 
-    fs.readFile(`${__dirname}/pictures/${src}`, (error, picture) => {
+    fs.readFile(`https://giphy.com/gifs/${src}`, (error, picture) => {
         if (error) throw new Error(error)
 
         bot.sendDocument(chatId, picture).then(() => {
@@ -146,7 +143,7 @@ function sendPictureByName(chatId, picName) {
         })
     });
 
-}
+};
 
 function sendCurrencyScreen(chatId) {
 

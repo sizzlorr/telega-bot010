@@ -30,10 +30,15 @@ const KB = {
 
 const PicSrcs = {
     [KB.cat]: [
-        'JIX9t2j0ZTN9S'
+        'cat1.gif',
+        'cat2.gif',
+        'cat3.gif'
     ],
     [KB.memes]: [
-        'cat-lol-vFKqnCdLPNOKc'
+        'mem1.gif',
+        'mem2.gif',
+        'mem3.gif',
+        'mem4.gif'
     ]
 };
 
@@ -135,7 +140,7 @@ function sendPictureByName(chatId, picName) {
 
     bot.sendMessage(chatId, 'Превозмогаю...');
 
-    fs.readFile(`https://giphy.com/gifs/${src}`, (error, picture) => {
+    fs.readFile(`${__dirname}/pictures/${src}`, (error, picture) => {
         if (error) throw new Error(error)
 
         bot.sendDocument(chatId, picture).then(() => {
